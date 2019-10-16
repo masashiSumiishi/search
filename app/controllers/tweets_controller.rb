@@ -4,7 +4,7 @@ before_action :twitter_client, only: [:search]
   def search
     @tweets = []
     if params[:keyword].present?
-      tweets = @client.search(params[:keyword], count: 10, result_type: "recent").take(10)
+      tweets = @client.search(params[:keyword], result_type: "recent").take(50)
       tweets.each do |tw|
         @tweets << tw.text
       end
